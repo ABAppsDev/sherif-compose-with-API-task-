@@ -1,6 +1,7 @@
 package com.route.compose_with_api.presentation.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
             Compose_with_ApiTheme {
                 PostsList(postsList = postViewModel.posts)
                 postViewModel.getPosts()
+                Log.d("getPosts","outside of scope")
             }
         }
     }
