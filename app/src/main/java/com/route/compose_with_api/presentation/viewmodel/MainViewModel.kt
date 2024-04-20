@@ -14,9 +14,10 @@ import com.route.compose_with_api.data.model.PostResponse
 import com.route.compose_with_api.domain.usecase.UseCase
 import kotlinx.coroutines.DEBUG_PROPERTY_NAME
 import kotlinx.coroutines.launch
+import retrofit2.await
 
 class MainViewModel : ViewModel() {
-    var postsUseCase = UseCase()
+   private lateinit var postsUseCase : UseCase
     //private val api = RetrofitInstance.api
     //val _Posts = MutableLiveData<List<PostResponse>>()
     var posts : List<PostResponse> by mutableStateOf(listOf())
@@ -24,7 +25,7 @@ class MainViewModel : ViewModel() {
         Log.d("getPosts","outside of scope")
         viewModelScope.launch {
             try {
-                val response = postsUseCase.execute()
+                val response = postsUseCase.execute().await()
                 if(response.isNotEmpty()){
                     posts = response
                     Log.d("getPosts","$posts")
