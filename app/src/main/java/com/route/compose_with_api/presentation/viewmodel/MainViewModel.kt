@@ -1,5 +1,6 @@
 package com.route.compose_with_api.presentation.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,11 +19,13 @@ class MainViewModel : ViewModel() {
     //val _Posts = MutableLiveData<List<PostResponse>>()
     var posts : List<PostResponse> by mutableStateOf(listOf())
     fun getPosts() {
+        Log.d("getPosts","out of scope")
         viewModelScope.launch {
             try {
                 val response = api.getPosts()
                 if(response.isNotEmpty()){
                     posts = response
+                    Log.d("getPosts","$posts")
                 }
             }catch (e : Exception){
 
