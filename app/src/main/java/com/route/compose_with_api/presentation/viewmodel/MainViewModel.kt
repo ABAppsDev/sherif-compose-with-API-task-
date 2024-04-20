@@ -28,7 +28,9 @@ class MainViewModel : ViewModel() {
                     Log.d("getPosts","$posts")
                 }
             }catch (e : Exception){
-
+                val postErrorOne = PostResponse("Error when call data " ,0," ",0)
+                posts = listOf(postErrorOne)
+                Log.d("getPosts","$posts")
             }
         }
     }
