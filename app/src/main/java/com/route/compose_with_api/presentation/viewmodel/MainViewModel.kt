@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.route.compose_with_api.data.RetrofitInstance
 import com.route.compose_with_api.data.model.CatRespose
+import com.route.compose_with_api.data.model.Google
+import com.route.compose_with_api.data.model.Name
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
@@ -24,7 +26,11 @@ class MainViewModel : ViewModel() {
                     Log.d("getPosts","$catsList")
                 }
             }catch (e : Exception){
-
+                val cat = CatRespose(
+                    1 ," " ," ",true ," " , Google(" "," "," ")," ",
+                    true , Name("first", "last" ),"6666", "http://placehold.it/120×120&text=image1", " "
+                )
+                catsList = listOf(cat)
             }
         }
     }
